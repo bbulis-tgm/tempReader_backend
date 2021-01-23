@@ -1,5 +1,12 @@
 package com.bulis.temp.backend.helper;
 
+/**
+ * File is needed because Spring only Supports one RequestBody argument
+ * This file is the structur of the request for adding data to the database
+ *
+ * @author Benjamin Bulis
+ * @version V1.0
+ */
 public class AddTemperatureRequest {
 
     private double temp;
