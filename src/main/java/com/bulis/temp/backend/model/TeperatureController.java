@@ -1,30 +1,35 @@
 package com.bulis.temp.backend.model;
 
-import com.bulis.temp.backend.helper.Response;
-import com.bulis.temp.backend.helper.ResponseDetails;
-import com.bulis.temp.backend.helper.ResponseError;
-import com.bulis.temp.backend.helper.Temperature;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.bulis.temp.backend.helper.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicLong;
 
 @RestController
+@RequestMapping(path = "/sensors")
 public class TeperatureController {
 
-    private final AtomicLong counter = new AtomicLong();
+    @Autowired
+    private TemperatureReposiroty temperatureReposiroty;
 
-    @GetMapping("/temperature")
+    @GetMapping("/all")
     public Response temperature() {
-        return new Response(true, new ResponseDetails(new Temperature(counter.incrementAndGet(), 0.0, new Date().toString())));
+        return new Response(true, temperatureReposiroty.findAll());
     }
 
 
-    @PostMapping("/temperature")
-    public String addTemperature() {
-        return "";
+    @PostMapping("/add")
+    public @ResponseStatus(HttpStatus.CREATED) Response addTemperature(@RequestBody AddTemperatureRequest addTemperatureRequest) {
+        Temperature temperature = new Temperature();
+        temperature.setTemp(addTemperatureRequest.getTemp());
+        temperature.setDate(addTemperatureRequest.getDate());
+        temperature.setSensor(addTemperatureRequest.getSensor());
+
+        temperatureReposiroty.save(temperature);
+        return new Response(true, "saved");
     }
 
 }
