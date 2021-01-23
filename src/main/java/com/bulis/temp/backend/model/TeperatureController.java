@@ -13,7 +13,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * Handls receiving data and sending data if requested
  *
  * @author Benjamin Bulis
- * @version V1.0
+ * @version V1.1
  */
 @RestController
 @RequestMapping(path = "/sensors")
@@ -41,13 +41,16 @@ public class TeperatureController {
      */
     @PostMapping("/add")
     public @ResponseStatus(HttpStatus.CREATED) Response addTemperature(@RequestBody AddTemperatureRequest addTemperatureRequest) {
-        Temperature temperature = new Temperature();
-        temperature.setTemp(addTemperatureRequest.getTemp());
-        temperature.setDate(addTemperatureRequest.getDate());
-        temperature.setSensor(addTemperatureRequest.getSensor());
-
-        temperatureReposiroty.save(temperature);
-        return new Response(true, "saved");
+        try {
+            Temperature temperature = new Temperature();
+            temperature.setTemp(addTemperatureRequest.getTemp());
+            temperature.setDate(addTemperatureRequest.getDate());
+            temperature.setSensor(addTemperatureRequest.getSensor());
+            Temperature temperatureSaved = temperatureReposiroty.save(temperature);
+            return new Response(true, "saved");
+        } catch (Exception e) {
+            return new Response(false, new ResponseError("database", "error when saving to database"));
+        }
     }
 
 }
