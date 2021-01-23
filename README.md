@@ -20,8 +20,10 @@ Das Repository umfasst nur das Backend.
 
 ## Fortschritt
 - [x] Aufsetzen der Datenbank
-- [ ] Erstellen der Datenstrukturen in der Datenbank
-- [ ] Endpoint fürs Abrufen der Daten
-- [ ] Endpoint zum Empfangen von Daten
-- [x] Test Enpoint
+- [x] Erstellen der Datenstrukturen in der Datenbank
+- [x] Endpoint fürs Abrufen der Daten
+- [x] Endpoint zum Empfangen von Daten
+- [ ] Test Enpoint
 - [ ] Endpoint für Frontend Kommunikation
+- [ ] Error handling durchgeführt
+- [ ] Testcases geschrieben und ausgeführt
