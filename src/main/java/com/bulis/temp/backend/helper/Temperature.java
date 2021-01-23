@@ -1,19 +1,29 @@
 package com.bulis.temp.backend.helper;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
+/**
+ * Database structur with all arguments to save in database
+ *
+ * @author Benjamin Bulis
+ * @version V1.1
+ */
 @Entity
 public class Temperature {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
+    @Column(nullable = false)
     private double temp;
+    @Column(nullable = false)
     private String date;
+    @Column(nullable = false)
     private String sensor;
+
+    public long getId() {
+        return id;
+    }
 
     public double getTemp() {
         return temp;
