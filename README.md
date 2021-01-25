@@ -25,7 +25,7 @@ Alle Endpoints werden mit `/sensors` aufgerufen
 - **GET** `/findByDate` Sucht nach einem speziellen Datum und gibt diese Werte als Liste zurück
 - **POST** `/add` Fügt einen Wert der Datenbank hinzu
 
-### Response Struktur
+### Response/Request Struktur
 [Beispiel Responses](RESPONSE.md)
 
 ## Fortschritt
