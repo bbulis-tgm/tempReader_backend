@@ -11,7 +11,8 @@ Das Repository umfasst nur das Backend.
 * Speicherung der Daten in SQL Datenbank
 
 ## Lauffähig machen
-*TODO*
+Keine `*.jar` exportiert.  
+**Keine Lauffähige Version derzeit**
 
 ## Verwendete Technologien
 * Java als Entwicklungssprache
