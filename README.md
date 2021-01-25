@@ -21,9 +21,9 @@ Keine `*.jar` exportiert.
 
 ## Endpoints
 Alle Endpoints werden mit `/sensors` aufgerufen
-- **GET** `/all` Gibt alle in der Datenbank gespeicherten Werte zurück
+- **GET** `/all` gibt alle in der Datenbank gespeicherten Werte zurück
 - **GET** `/findByDate` Sucht nach einem speziellen Datum und gibt diese Werte als Liste zurück
-- **POST** `/add` Fügt einen Wert der Datenbank hinzu
+- **POST** `/add` fügt einen Wert der Datenbank hinzu
 
 ### Response/Request Struktur
 [Beispiel Responses](RESPONSE.md)
