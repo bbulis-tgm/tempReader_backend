@@ -19,6 +19,15 @@ Keine `*.jar` exportiert.
 * SpringFramework für den WebService
 * H2 Datenbank - Memory basiert
 
+## Endpoints
+Alle Endpoints werden mit `/sensors` aufgerufen
+- **GET** `/all` Gibt alle in der Datenbank gespeicherten Werte zurück
+- **GET** `/findByDate` Sucht nach einem speziellen Datum und gibt diese Werte als Liste zurück
+- **POST** `/add` Fügt einen Wert der Datenbank hinzu
+
+### Response Struktur
+[Beispiel Responses](RESPONSE.md)
+
 ## Fortschritt
 - [x] Aufsetzen der Datenbank
 - [x] Erstellen der Datenstrukturen in der Datenbank

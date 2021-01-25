@@ -7,7 +7,7 @@ package com.bulis.temp.backend.helper;
  * @author Benjamin Bulis
  * @version V1.0
  */
-public class AddTemperatureRequest {
+public class AddTemperatureRequestBody {
 
     private double temp;
     private String date;
