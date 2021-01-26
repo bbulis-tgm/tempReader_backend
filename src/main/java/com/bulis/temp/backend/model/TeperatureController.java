@@ -29,7 +29,7 @@ public class TeperatureController {
     @GetMapping("/findAll")
     public Response temperature() {
         Iterable<Temperature> temperatures = temperatureReposiroty.findAll();
-        if (temperatures.iterator().hasNext()) {
+        if (!temperatures.iterator().hasNext()) {
             return new Response(false, "no data found");
         }
         return new Response(true, temperatures);
