@@ -41,18 +41,12 @@ public class TeperatureController {
      * @return data from specific date
      */
     @GetMapping("/findByDate")
-    public Response findTemperatureByDate(@RequestBody FindTemperatureByDateRequestBody findTemperatureByDateRequestBody) {
-        ArrayList<Temperature> returnTemperature = new ArrayList<>();
-        ArrayList<Temperature> temperatures = (ArrayList<Temperature>) temperatureReposiroty.findAll();
-        for (Temperature item : temperatures) {
-            if (item.getDate().equals(findTemperatureByDateRequestBody.getDate())) {
-                returnTemperature.add(item);
-            }
-        }
-        if (returnTemperature.isEmpty()) {
+    public Response findTemperatureByDate(@RequestBody FindTemperatureByDateRequestBody body) {
+        Iterable<Temperature> temperatures = temperatureReposiroty.findByDate(body.getDate());
+        if (!temperatures.iterator().hasNext()) {
             return new Response(false, "no data found");
         }
-        return new Response(true, returnTemperature);
+        return new Response(true, temperatures);
     }
 
     /**
