@@ -21,7 +21,7 @@ Keine `*.jar` exportiert.
 
 ## Endpoints
 Alle Endpoints werden mit `/sensors` aufgerufen
-- **GET** `/all` gibt alle in der Datenbank gespeicherten Werte zurück
+- **GET** `/findAll` gibt alle in der Datenbank gespeicherten Werte zurück
 - **GET** `/findByDate` Sucht nach einem speziellen Datum und gibt diese Werte als Liste zurück
 - **POST** `/add` fügt einen Wert der Datenbank hinzu
 

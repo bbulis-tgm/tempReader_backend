@@ -1,5 +1,5 @@
 # Beispiel Responses
-## Response für `/findAll`
+## Response für `/sensors/findAll`
 HTTP Methode **GET**
 ```json
 {
