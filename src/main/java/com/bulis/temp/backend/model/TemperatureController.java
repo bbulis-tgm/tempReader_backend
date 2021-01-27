@@ -5,8 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-
 /**
  * Controller handls incoming requests
  * Handls receiving data and sending data if requested
@@ -16,10 +14,10 @@ import java.util.ArrayList;
  */
 @RestController
 @RequestMapping(path = "/sensors")
-public class TeperatureController {
+public class TemperatureController {
 
     @Autowired
-    private TemperatureReposiroty temperatureReposiroty;
+    private TemperatureRepository temperatureRepository;
 
     /**
      * Method return all temperature and sensor data
@@ -28,7 +26,7 @@ public class TeperatureController {
      */
     @GetMapping("/findAll")
     public Response temperature() {
-        Iterable<Temperature> temperatures = temperatureReposiroty.findAll();
+        Iterable<Temperature> temperatures = temperatureRepository.findAll();
         if (!temperatures.iterator().hasNext()) {
             return new Response(false, "no data found");
         }
@@ -42,7 +40,7 @@ public class TeperatureController {
      */
     @GetMapping("/findByDate")
     public Response findTemperatureByDate(@RequestBody FindTemperatureByDateRequestBody body) {
-        Iterable<Temperature> temperatures = temperatureReposiroty.findByDate(body.getDate());
+        Iterable<Temperature> temperatures = temperatureRepository.findByDate(body.getDate());
         if (!temperatures.iterator().hasNext()) {
             return new Response(false, "no data found");
         }
@@ -62,7 +60,7 @@ public class TeperatureController {
             temperature.setTemp(addTemperatureRequestBody.getTemp());
             temperature.setDate(addTemperatureRequestBody.getDate());
             temperature.setSensor(addTemperatureRequestBody.getSensor());
-            Temperature temperatureSaved = temperatureReposiroty.save(temperature);
+            Temperature temperatureSaved = temperatureRepository.save(temperature);
             return new Response(true, "saved");
         } catch (Exception e) {
             return new Response(false, new ResponseError("database", "error when saving to database"));
