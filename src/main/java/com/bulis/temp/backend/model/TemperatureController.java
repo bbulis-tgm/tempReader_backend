@@ -5,12 +5,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
+
 /**
  * Controller handls incoming requests
  * Handls receiving data and sending data if requested
  *
  * @author Benjamin Bulis
- * @version V1.2
+ * @version V1.3
  */
 @RestController
 @RequestMapping(path = "/sensors")
@@ -39,8 +41,8 @@ public class TemperatureController {
      * @return data from specific date
      */
     @GetMapping("/findByDate")
-    public Response findTemperatureByDate(@RequestBody FindTemperatureByDateRequestBody body) {
-        Iterable<Temperature> temperatures = temperatureRepository.findByDate(body.getDate());
+    public Response findTemperatureByDate(@RequestParam LocalDateTime dateTime) {
+        Iterable<Temperature> temperatures = temperatureRepository.findByDate(dateTime);
         if (!temperatures.iterator().hasNext()) {
             return new Response(false, new ResponseError("database", "no data found"));
         }
@@ -58,7 +60,7 @@ public class TemperatureController {
         try {
             Temperature temperature = new Temperature();
             temperature.setTemp(addTemperatureRequestBody.getTemp());
-            temperature.setDate(addTemperatureRequestBody.getDate());
+            temperature.setDate(LocalDateTime.now());
             temperature.setSensor(addTemperatureRequestBody.getSensor());
             Temperature temperatureSaved = temperatureRepository.save(temperature);
             return new Response(true, "saved");
