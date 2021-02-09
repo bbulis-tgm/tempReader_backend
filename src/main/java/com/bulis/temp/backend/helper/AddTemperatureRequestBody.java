@@ -1,5 +1,8 @@
 package com.bulis.temp.backend.helper;
 
+import java.time.LocalDateTime;
+import java.util.Date;
+
 /**
  * File is needed because Spring only Supports one RequestBody argument
  * This file is the structur of the request for adding data to the database
@@ -10,7 +13,7 @@ package com.bulis.temp.backend.helper;
 public class AddTemperatureRequestBody {
 
     private double temp;
-    private String date;
+    private LocalDateTime date;
     private String sensor;
 
     public double getTemp() {
@@ -21,11 +24,11 @@ public class AddTemperatureRequestBody {
         this.temp = temp;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 

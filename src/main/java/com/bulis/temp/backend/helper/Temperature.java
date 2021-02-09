@@ -1,6 +1,8 @@
 package com.bulis.temp.backend.helper;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * Database structur with all arguments to save in database
@@ -17,7 +19,7 @@ public class Temperature {
     @Column(nullable = false)
     private double temp;
     @Column(nullable = false)
-    private String date;
+    private LocalDateTime date;
     @Column(nullable = false)
     private String sensor;
 
@@ -33,11 +35,11 @@ public class Temperature {
         this.temp = temp;
     }
 
-    public String getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 
