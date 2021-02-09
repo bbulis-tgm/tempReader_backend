@@ -28,7 +28,7 @@ public class TemperatureController {
     public Response temperature() {
         Iterable<Temperature> temperatures = temperatureRepository.findAll();
         if (!temperatures.iterator().hasNext()) {
-            return new Response(false, "no data found");
+            return new Response(false, new ResponseError("database", "no data found"));
         }
         return new Response(true, temperatures);
     }
@@ -42,7 +42,7 @@ public class TemperatureController {
     public Response findTemperatureByDate(@RequestBody FindTemperatureByDateRequestBody body) {
         Iterable<Temperature> temperatures = temperatureRepository.findByDate(body.getDate());
         if (!temperatures.iterator().hasNext()) {
-            return new Response(false, "no data found");
+            return new Response(false, new ResponseError("database", "no data found"));
         }
         return new Response(true, temperatures);
     }
